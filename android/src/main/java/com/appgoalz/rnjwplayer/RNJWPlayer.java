@@ -3,9 +3,7 @@ package com.appgoalz.rnjwplayer;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.support.annotation.Nullable;
 import android.view.KeyEvent;
-import android.view.View;
 
 import com.longtailvideo.jwplayer.JWPlayerView;
 import com.longtailvideo.jwplayer.configuration.PlayerConfig;
@@ -19,9 +17,9 @@ public class RNJWPlayer extends JWPlayerView {
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         // Exit fullscreen or perform the action requested
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             this.setFullscreen(false,false);
-            return false;
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }
